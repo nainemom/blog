@@ -1,4 +1,15 @@
 ---
 layout: base
 ---
-{% include post.html post = page short = false %}
+{% assign post = collections.posts | findByUrl: page.url %}
+{% include "post.html", post: post, short: false, body: content %}
+
+{% assign relatedPosts = collections.posts | related: post %}
+{% if relatedPosts.size > 0 %}
+    <div class="miniposts">
+        <h3 class="title"> مطالب مشابه </h3>
+        {% for related in relatedPosts %}
+            {% include "minipost.html", post: related %}
+        {% endfor %}
+    </div>
+{% endif %}

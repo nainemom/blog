@@ -1,3 +1,19 @@
 ---
-layout: home
+layout: base
+menu: home
+pagination:
+  data: collections.posts
+  size: 5
+  reverse: true
+  alias: posts
+permalink: "{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber | plus: 1 }}/{% else %}/{% endif %}"
 ---
+{% for post in posts %}
+	{% include "post.html", post: post, short: true %}
+{% endfor %}
+
+<div class="pagination">
+	{% if pagination.href.previous %}<a href="{{ pagination.href.previous }}"><i class="fa fa-long-arrow-right"></i> مطالب جدیدتر </a>{% endif %}
+	{% if pagination.href.previous and pagination.href.next %} <span class="sep"></span> {% endif %}
+	{% if pagination.href.next %}<a href="{{ pagination.href.next }}">مطالب قدیمی‌تر <i class="fa fa-long-arrow-left"></i> </a>{% endif %}
+</div>

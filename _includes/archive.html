@@ -1,0 +1,8 @@
+<div class="miniposts">
+	{% if heading %}
+		<p class="title"> {{ heading }} <b>{{ title }}</b>: </p>
+	{% endif %}
+	{% for post in archivePosts %}
+		{% include "minipost.html", post: post %}
+	{% endfor %}
+</div>

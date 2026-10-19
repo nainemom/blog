@@ -1,6 +1,3 @@
----
----
-
-@import "cssreset";
-@import "vazir-font";
-@import "style";
+@use "cssreset";
+@use "vazir-font";
+@use "style";

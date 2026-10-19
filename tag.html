@@ -1,0 +1,12 @@
+---
+layout: base
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: "/tag/{{ tag | archiveSlug }}/"
+eleventyComputed:
+  title: "{{ tag }}"
+---
+{% assign archivePosts = collections.posts | withTag: tag %}
+{% include "archive.html", heading: "مطالب حاوی کلمه کلیدی" %}

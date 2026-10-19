@@ -1,12 +1,11 @@
-{% assign post = include.post %}
 <article class="minipost">
     <div class="header">
         <h3 class="title">
-            <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+            <a href="{{ site.url }}{{ post.url }}">{{ post.data.title }}</a>
         </h3>
         <h5>
             <i class="fa fa-calendar-o"></i> {{ post.date | jdate: "%A، %d %b %y" }}
         </h5>
     </div>
-    <div class="body"> {{ post.excerpt | slice: 0, 150 | strip_html}} </div>
+    <div class="body"> {{ post | excerpt | strip_html | slice: 0, 150 }} </div>
 </article>

@@ -1,16 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-	{% include meta.html %}
+	{% include "meta.html" %}
 	<link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" media="all" href="/blog/css/style.css" />
+	<link rel="stylesheet" media="all" href="/css/style.css" />
 </head>
 <body>
 	<header id="header">
-		{% include header.html %}
+		{% include "header.html" %}
 	</header>
 	<section id="menu">
-		{% include categories.html %}
+		<ul>
+			<li {% if menu == "home" %} class="selected" {% endif %}><a href="{{ site.url }}/">صفحه اصلی</a></li>
+		{% for category in collections.categoryList %}
+			<li {% if menu == "category" and title == category %} class="selected" {% endif %}><a href="{{ site.url }}/category/{{ category | archiveSlug }}/">{{ category }}</a></li>
+		{% endfor %}
+		</ul>
 	</section>
 	<section id="content">
 		{{ content }}
@@ -18,3 +23,4 @@
 	<footer id="footer">
 	</footer>
 </body>
+</html>

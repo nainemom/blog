@@ -1,0 +1,13 @@
+---
+layout: base
+menu: category
+pagination:
+  data: collections.categoryList
+  size: 1
+  alias: category
+permalink: "/category/{{ category | archiveSlug }}/"
+eleventyComputed:
+  title: "{{ category }}"
+---
+{% assign archivePosts = collections.posts | withCategory: category %}
+{% include "archive.html" %}
